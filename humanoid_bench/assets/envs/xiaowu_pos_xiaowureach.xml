@@ -1,0 +1,12 @@
+<mujoco model="xiaowu_pos_xiaowureach">
+    <option timestep="0.002" iterations="100" ls_iterations="50" solver="Newton">
+        <flag eulerdamp="enable"/>
+    </option>
+    <include file="../robots/xiaowu31_pos.xml"/>
+    <!-- <include file="../tasks/xiaowutask.xml"/> -->
+    <!-- 基座位置-四元数-关节 0.73-->
+    <keyframe> 
+        <!-- <key name="qpos0" qpos=" 0 0 0.53 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/> -->
+        <key name="qpos0" qpos=" 0 0 0.57 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
+    </keyframe>
+</mujoco>

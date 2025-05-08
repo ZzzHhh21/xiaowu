@@ -1,0 +1,291 @@
+<mujoco model="xiaowu31">
+    <compiler angle="radian" />
+    <size njmax="500" nconmax="100" />
+
+    <asset>
+        <mesh name="LINK_BASE" file="../xiaowu/LINK_BASE.STL" />
+        <mesh name="LINK_LAT_HIP" file="../xiaowu/LINK_LAT_HIP.STL" />
+        <mesh name="LINK_LAT_LEG_L" file="../xiaowu/LINK_LAT_LEG_L.STL" />
+        <mesh name="LINK_LAT_WHEEL_L" file="../xiaowu/LINK_LAT_WHEEL_L.STL" />
+        <mesh name="LINK_LAT_LEG_R" file="../xiaowu/LINK_LAT_LEG_R.STL" />
+        <mesh name="LINK_LAT_WHEEL_R" file="../xiaowu/LINK_LAT_WHEEL_R.STL" />
+        <mesh name="LINK_MED_HIP" file="../xiaowu/LINK_MED_HIP.STL" />
+        <mesh name="LINK_MED_LEG_L" file="../xiaowu/LINK_MED_LEG_L.STL" />
+        <mesh name="LINK_MED_WHEEL_L" file="../xiaowu/LINK_MED_WHEEL_L.STL" />
+        <mesh name="LINK_MED_LEG_R" file="../xiaowu/LINK_MED_LEG_R.STL" />
+        <mesh name="LINK_MED_WHEEL_R" file="../xiaowu/LINK_MED_WHEEL_R.STL" />
+        <mesh name="LINK_WAIST_PITCH" file="../xiaowu/LINK_WAIST_PITCH.STL" />
+        <mesh name="LINK_WAIST_YAW" file="../xiaowu/LINK_WAIST_YAW.STL" />
+        <mesh name="LINK_HEAD" file="../xiaowu/LINK_HEAD.STL" />
+        <mesh name="LINK_SHOULDER_L1" file="../xiaowu/LINK_SHOULDER_L1.STL" />
+        <mesh name="LINK_SHOULDER_L2" file="../xiaowu/LINK_SHOULDER_L2.STL" />
+        <mesh name="LINK_SHOULDER_L3" file="../xiaowu/LINK_SHOULDER_L3.STL" />
+        <mesh name="LINK_ELBOW_L1" file="../xiaowu/LINK_ELBOW_L1.STL" />
+        <mesh name="LINK_ELBOW_L2" file="../xiaowu/LINK_ELBOW_L2.STL" />
+        <mesh name="LINK_WRIST_L1" file="../xiaowu/LINK_WRIST_L1.STL" />
+        <mesh name="LINK_WRIST_L2" file="../xiaowu/LINK_WRIST_L2.STL" />
+        <mesh name="LINK_SHOULDER_R1" file="../xiaowu/LINK_SHOULDER_R1.STL" />
+        <mesh name="LINK_SHOULDER_R2" file="../xiaowu/LINK_SHOULDER_R2.STL" />
+        <mesh name="LINK_SHOULDER_R3" file="../xiaowu/LINK_SHOULDER_R3.STL" />
+        <mesh name="LINK_ELBOW_R1" file="../xiaowu/LINK_ELBOW_R1.STL" />
+        <mesh name="LINK_ELBOW_R2" file="../xiaowu/LINK_ELBOW_R2.STL" />
+        <mesh name="LINK_WRIST_R1" file="../xiaowu/LINK_WRIST_R1.STL" />
+        <mesh name="LINK_WRIST_R2" file="../xiaowu/LINK_WRIST_R2.STL" />
+        <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
+        <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3"
+         markrgb="0.8 0.8 0.8" width="300" height="300"/>
+        <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
+    </asset>
+
+    <worldbody>
+        <light name="spotlight" mode="targetbodycom" target="LINK_BASE" pos="0 -6 4" cutoff="30"/>
+    <body name="LINK_BASE" pos="0 0 0.57">
+            <joint armature="0" damping="0" limited="false" name="root" pos="0 0 0" stiffness="0" type="free"/>
+            <site name="ROOT" pos="0 0 0.45" size="0.02" rgba="0 1 0 1"/>
+            <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_BASE" pos="0 0 0" />
+            <inertial mass="10" pos="0 0 0" diaginertia="1 1 1"/>
+            <body name="LINK_LAT_HIP" pos="0 0.2255 0" quat="0.6412 -0.6414 0.2985 0.2985">
+                <inertial pos="0.15913 3.4e-05 -0.24165" quat="0.702825 -0.077009 -0.0767047 0.70301" mass="8.4942" diaginertia="0.59817 0.355752 0.252278" />
+                <joint name="J_LAT_HIP" pos="0 0 0" axis="0 0 1" limited="true" range="0 5.4105" />
+                <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_LAT_HIP" />
+                <body name="LINK_LAT_LEG_L" pos="0.186 0 0" quat="0.707105 0 0.707108 0">
+                    <inertial pos="0.004339 -4.5e-05 0.24834" quat="0.999983 -0.000127762 -0.0048489 -0.00312641" mass="2.782" diaginertia="0.119721 0.11887 0.00359507" />
+                    <joint name="J_LAT_LEG_L" pos="0 0 0" axis="0 0 1" type="slide" limited="true" range="0 0.32" />
+                    <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_LAT_LEG_L" />
+                    <body name="LINK_LAT_WHEEL_L" pos="0 0 0.451" quat="0.707105 0 -0.707108 0">
+                        <inertial pos="0 0 0.004702" quat="0.5 0.5 -0.5 0.5" mass="0.71345" diaginertia="0.002725 0.001602 0.001602" />
+                        <joint name="J_LAT_WHEEL_L" pos="0 0 0" axis="0 0 1" limited="true" range="-1000000 1000000" />
+                        <site name="WHEEL1" pos="0.0 0 0" size="0.02" rgba="0 1 0 1"/>
+                        <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_LAT_WHEEL_L" />
+                    </body>
+                    <body name="LINK_LAT_FOOT_L" pos="0 0 0.451" quat="0.521 0.477 -0.521 -0.477">
+                        <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="0.5" diaginertia="0.003694 0.002053 0.002053" />
+                        <joint name="J_LAT_FOOT_L" pos="0 0 0" axis="0 0 1" limited="true" range="-2.1816 0" />
+                        <geom size="0.01" pos="0.07 -0.11 0" rgba="0.7529 0.7529 0.7529 1" />
+                    </body>
+                </body>
+
+                <body name="LINK_LAT_LEG_R" pos="0.186 0 -0.451" quat="0.707105 0 0.707108 0">
+                    <inertial pos="-0.004339 4.5e-05 0.24834" quat="0.999983 0.000127762 0.0048489 -0.00312641" mass="2.782" diaginertia="0.119721 0.11887 0.00359507" />
+                    <joint name="J_LAT_LEG_R" pos="0 0 0" axis="0 0 1" type="slide" limited="true" range="0 0.32" />
+                    <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_LAT_LEG_R" />
+                    <body name="LINK_LAT_WHEEL_R" pos="0 0 0.451" quat="0.707105 0 -0.707108 0">
+                        <inertial pos="0 0 -0.004702" quat="0.5 0.5 -0.5 0.5" mass="0.71345" diaginertia="0.002725 0.001602 0.001602" />
+                        <joint name="J_LAT_WHEEL_R" pos="0 0 0" axis="0 0 1" limited="true" range="-1000000 1000000" />
+                        <site name="WHEEL2" pos="0.0 0 0" size="0.02" rgba="0 1 0 1"/>
+                        <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_LAT_WHEEL_R" />
+                    </body>
+                    <body name="LINK_LAT_FOOT_R" pos="0 0 0.451" quat="0.521 0.477 -0.521 -0.477">
+                        <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="0.5" diaginertia="0.003694 0.002053 0.002053" />
+                        <joint name="J_LAT_FOOT_R" pos="0 0 0" axis="0 0 1" limited="true" range="-2.1816 0" />
+                        <geom size="0.01" pos="0.07 -0.11 0" rgba="0.7529 0.7529 0.7529 1" />
+                    </body>
+                </body>
+            </body>
+
+            <body name="LINK_MED_HIP" pos="0 0.12325 0" quat="0.2984 -0.2983 0.6412 0.6413">
+                <inertial pos="0.17865 1.6e-05 -0.1091" quat="0.540328 0.455948 0.456611 0.540058" mass="8.3414" diaginertia="0.32349 0.228651 0.105269" />
+                <joint name="J_MED_HIP" pos="0 0 0" axis="0 0 1" limited="true" range="-5.4105 0" />
+                <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_MED_HIP" />
+                <body name="LINK_MED_LEG_L" pos="0.186 0 0" quat="0.707105 0 0.707108 0">
+                    <inertial pos="0.004339 -4.5e-05 0.24834" quat="0.999983 -0.000127762 -0.0048489 -0.00312641" mass="2.782" diaginertia="0.119721 0.11887 0.00359507" />
+                    <joint name="J_MED_LEG_L" pos="0 0 0" axis="0 0 1" type="slide" limited="true" range="0 0.32" />
+                    <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_MED_LEG_L" />
+                    <body name="LINK_MED_WHEEL_L" pos="0 0 0.451" quat="0.707105 0 -0.707108 0">
+                        <inertial pos="0 0 0.004702" quat="0.5 0.5 -0.5 0.5" mass="0.71345" diaginertia="0.002725 0.001602 0.001602" />
+                        <joint name="J_MED_WHEEL_L" pos="0 0 0" axis="0 0 1" limited="true" range="-1000000 1000000" />
+                        <site name="WHEEL3" pos="0.0 0 0" size="0.02" rgba="0 1 0 1"/>
+                        <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_MED_WHEEL_L" />
+                    </body>
+                    <body name="LINK_MED_FOOT_L" pos="0 0 0.451" quat="0.521 0.477 -0.521 -0.477">
+                        <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="0.5" diaginertia="0.003694 0.002053 0.002053" />
+                        <joint name="J_MED_FOOT_L" pos="0 0 0" axis="0 0 1" limited="true" range="-2.1816 0" />
+                        <geom size="0.01" pos="0.07 -0.11 0" rgba="0.7529 0.7529 0.7529 1" />
+                    </body>
+                </body>
+                <body name="LINK_MED_LEG_R" pos="0.186 0 -0.2465" quat="0.707105 0 0.707108 0">
+                    <inertial pos="-0.005339 4.5e-05 0.24834" quat="0.999983 0.000127762 0.0048489 -0.00312641" mass="2.782" diaginertia="0.119721 0.11887 0.00359507" />
+                    <joint name="J_MED_LEG_R" pos="0 0 0" axis="0 0 1" type="slide" limited="true" range="0 0.32" />
+                    <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_MED_LEG_R" />
+                    <body name="LINK_MED_WHEEL_R" pos="0 0 0.451" quat="0.707105 0 -0.707108 0">
+                        <inertial pos="0 0 -0.003702" quat="0.5 0.5 -0.5 0.5" mass="0.71345" diaginertia="0.002725 0.001602 0.001602" />
+                        <joint name="J_MED_WHEEL_R" pos="0 0 0" axis="0 0 1" limited="true" range="-1000000 1000000" />
+                        <site name="WHEEL4" pos="0.0 0 0" size="0.02" rgba="0 1 0 1"/>
+                        <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_MED_WHEEL_R" />
+                    </body>
+                    <body name="LINK_MED_FOOT_R" pos="0 0 0.451" quat="0.521 0.477 -0.521 -0.477">
+                        <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="0.5" diaginertia="0.003694 0.002053 0.002053" />
+                        <joint name="J_MED_FOOT_R" pos="0 0 0" axis="0 0 1" limited="true" range="-2.1816 0" />
+                        <geom size="0.01" pos="0.07 -0.11 0" rgba="0.7529 0.7529 0.7529 1" />
+                    </body>
+                </body>
+            </body>
+
+            <body name="LINK_WAIST_PITCH" pos="0 0 0.15" quat="0.499998 -0.5 -0.5 -0.500002">
+            <!-- <body name="LINK_WAIST_PITCH" pos="0 0 0.15" quat="0.5792 -0.5792 -0.4056 -0.4056"> -->
+                <inertial pos="0.0690926 2.01797e-06 0.000461243" quat="0.680126 0.000628288 0.00220574 0.733092" mass="0.895764" diaginertia="0.00487164 0.00465432 0.00140778" />
+                <joint name="J_WAIST_PITCH" pos="0 0 0" axis="0 0 1" limited="true" range="-0.6981 1.5708" />
+                <!-- <joint name="J_WAIST_PITCH" pos="0 0 0" axis="0 0 1" limited="true" range="-1.0472 1.2217" /> -->
+                <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_WAIST_PITCH" />
+                <body name="LINK_WAIST_YAW" pos="0.11 0 0" quat="0.499998 0.5 0.500002 0.5">
+                    <inertial pos="-0.032476 -0.000483 0.18782" quat="0.996778 0.0014377 -0.0800972 -0.00411271" mass="15.4965" diaginertia="0.404612 0.352857 0.14191" />
+                    <joint name="J_WAIST_YAW" pos="0 0 0" axis="0 0 1" limited="true" range="-1.3614 1.3614" />
+                    <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_WAIST_YAW" />
+                    <site name="waist_SITE" pos="0 0 0" size="0.02" rgba="1 0 0 1"/>
+                    <body name="LINK_HEAD" pos="0 0 0.448" quat="0.499998 -0.5 -0.5 -0.500002">
+                        <inertial pos="0.021339 0.001489 0.002676" quat="0.540724 0.492911 0.466732 0.496807" mass="1.7813" diaginertia="0.00605473 0.00484264 0.00371762" />
+                        <joint name="J_HEAD" pos="0 0 0" axis="0 0 1" limited="true" range="-0.6109 1.1345" />
+                        <site name="H_SITE" pos="0 0 0" size="0.02" rgba="0 1 0 1"/>
+                        <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_HEAD" />
+                    </body>
+                    <body name="LINK_SHOULDER_L1" pos="0 0.18 0.4" quat="0.5964 -0.5964 0.3800 0.3800">
+                        <inertial pos="2e-05 0.002185 0.063744" quat="0.707059 0.00821607 -0.00821607 0.707059" mass="1.6989" diaginertia="0.00312856 0.002257 0.00209544" />
+                        <joint name="J_SHOULDER_L1" pos="0 0 0" axis="0 0 1" limited="true" range="-3.229 2.007" />
+                        <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_SHOULDER_L1" />
+                        <body name="LINK_SHOULDER_L2" pos="0 0 0.07" quat="0.707105 0.707108 0 0">
+                            <inertial pos="0.10988 0.000196 0.001131" quat="0.510873 0.483195 0.47866 0.525753" mass="1.8095" diaginertia="0.00373127 0.00355104 0.00156769" />
+                            <joint name="J_SHOULDER_L2" pos="0 0 0" axis="0 0 1" limited="true" range="-0.261799 2.2689" />
+                            <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_SHOULDER_L2" />
+                            <body name="LINK_SHOULDER_L3" pos="0.1685 0 0" quat="0.707105 0 0.707108 0">
+                                <inertial pos="-0.000217 1.9e-05 0.060051" quat="0.713652 0.00131979 0.00216755 0.700496" mass="1.7403" diaginertia="0.00229102 0.002237 0.00142798" />
+                                <joint name="J_SHOULDER_L3" pos="0 0 0" axis="0 0 1" limited="true" range="-2.618 2.618" />
+                                <geom quat="0.707105 0 0 0.707108" type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_SHOULDER_L3" />
+                                <body name="LINK_ELBOW_L1" pos="0 0 0.1425" quat="0.3534 -0.3534 -0.6123 -0.6123">
+                                    <inertial pos="0.070289 0.000162 0.000289" quat="0.483424 0.510848 0.500864 0.504451" mass="1.4588" diaginertia="0.00254623 0.00249371 0.00114006" />
+                                    <joint name="J_ELBOW_L1" pos="0 0 0" axis="0 0 1" limited="true" range="-1.2217 0.5236" />
+                                    <site name="E_L_SITE" pos="0 0 0" size="0.002" rgba="1 1 0 1"/>
+                                    <geom quat="-3.67321e-06 1 0 0" type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_ELBOW_L1" />
+                                    <body name="LINK_ELBOW_L2" pos="0.124 0 0" quat="0.499998 0.5 0.500002 0.5">
+                                        <inertial pos="-0.000365 0.00147 0.101648" quat="0.736133 0.00323688 -0.00305844 0.676823" mass="1.37062" diaginertia="0.00696362 0.00636479 0.00179459" />
+                                        <joint name="J_ELBOW_L2" pos="0 0 0" axis="0 0 1" limited="true" range="-2.618 2.618" stiffness="100" damping="1"/>
+                                        <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_ELBOW_L2" contype="0" conaffinity="0" />
+                                        <body name="LINK_WRIST_L1" pos="0 0 0.1885" quat="0.707105 0 -0.707108 0">
+                                            <inertial pos="4e-06 -0.001549 0.001352" mass="0.021797" diaginertia="1.2e-05 7e-06 6e-06" />
+                                            <joint name="J_WRIST_L1" pos="0 0 0" axis="0 0 1" limited="true" range="-1.0472 1.0472" />
+                                            <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_WRIST_L1" contype="0" conaffinity="0" />
+                                            <body name="LINK_WRIST_L2" pos="0.01 0 0" quat="0.707105 -0.707108 0 0">
+                                                <inertial pos="0.10903 5.95521e-05 0.0055488" quat="0.49377 0.481911 0.508052 0.515594" mass="1.33955" diaginertia="0.00588674 0.0045584 0.00166987" />
+                                                <site name="W_L_SITE" pos="0 0 0" size="0.002" rgba="0 1 0 1"/>
+                                                <joint name="J_WRIST_L2" pos="0 0 0" axis="0 0 1" limited="true" range="-0.7854 0.7854" />
+                                                <geom quat="0.707105 0.707108 0 0" type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_WRIST_L2" />
+                                            </body>
+                                        </body>
+                                    </body>
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                    <body name="LINK_SHOULDER_R1" pos="0 -0.18 0.4" quat="0.5964 -0.5964 0.3800 0.3800">
+                        <inertial pos="-2e-05 0.002185 -0.063744" quat="0.707059 -0.00821607 0.00821607 0.707059" mass="1.6989" diaginertia="0.00312856 0.002257 0.00209544" />
+                        <joint name="J_SHOULDER_R1" pos="0 0 0" axis="0 0 1" limited="true" range="-3.229 2.007" />
+                        <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_SHOULDER_R1" />
+                        <body name="LINK_SHOULDER_R2" pos="0 0 -0.07" quat="0.707105 0.707108 0 0">
+                            <inertial pos="0.10988 0.000196 0.001131" quat="0.510873 0.483195 0.47866 0.525753" mass="1.8095" diaginertia="0.00373127 0.00355104 0.00156769" />
+                            <joint name="J_SHOULDER_R2" pos="0 0 0" axis="0 0 1" limited="true" range="-2.2689 0.261799" />
+                            <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_SHOULDER_R2" />
+                            <body name="LINK_SHOULDER_R3" pos="0.1684 0 0" quat="0.707105 0 0.707108 0">
+                                <inertial pos="-0.000217 1.9e-05 0.060151" quat="0.713652 0.00131979 0.00216755 0.700496" mass="1.7403" diaginertia="0.00229102 0.002237 0.00142798" />
+                                <joint name="J_SHOULDER_R3" pos="0 0 0" axis="0 0 1" limited="true" range="-2.618 2.618" />
+                                <geom quat="0.707105 0 0 0.707108" type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_SHOULDER_R3" />
+                                <body name="LINK_ELBOW_R1" pos="0 0 0.1426" quat="0.3534 -0.3534 -0.6123 -0.6123">
+                                    <inertial pos="0.070289 -0.000162 0.000211" quat="0.500864 0.504451 0.483424 0.510848" mass="1.4588" diaginertia="0.00254623 0.00249371 0.00114006" />
+                                    <joint name="J_ELBOW_R1" pos="0 0 0" axis="0 0 1" limited="true" range="-1.2217 0.5236" />
+                                    <site name="E_R_SITE" pos="0 0 0" size="0.002" rgba="1 0 0 1"/>
+                                    <geom quat="-3.67321e-06 1 0 0" type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_ELBOW_R1" />
+                                    <body name="LINK_ELBOW_R2" pos="0.124 0 0" quat="0.499998 0.5 0.500002 0.5">
+                                        <inertial pos="-0.000365 -0.00147 0.101648" quat="0.676823 -0.00305844 0.00323688 0.736133" mass="1.37062" diaginertia="0.00696362 0.00636479 0.00179459" />
+                                        <joint name="J_ELBOW_R2" pos="0 0 0" axis="0 0 1" limited="true" range="-2.618 2.618" stiffness="100" damping="1"/>
+                                        <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_ELBOW_R2" contype="0" conaffinity="0" />
+                                        <body name="LINK_WRIST_R1" pos="0 0 0.1885" quat="0.707105 0 -0.707108 0">
+                                            <inertial pos="4e-06 -0.001549 -0.001352" mass="0.021797" diaginertia="1.2e-05 7e-06 6e-06" />
+                                            <joint name="J_WRIST_R1" pos="0 0 0" axis="0 0 1" limited="true" range="-1.0472 1.0472" />
+                                            <geom type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_WRIST_R1" contype="0" conaffinity="0" />
+                                            <body name="LINK_WRIST_R2" pos="0 0 0" quat="0.707105 -0.707108 0 0">
+                                                <inertial pos="0.10903 -5.95521e-05 0.00587726" quat="0.515838 0.507803 0.481721 0.493956" mass="1.33955" diaginertia="0.00588171 0.00455851 0.00166474" />
+                                                <site name="W_R_SITE" pos="0 0 0" size="0.002" rgba="0 1 0 1"/>
+                                                <joint name="J_WRIST_R2" pos="0 0 0" axis="0 0 1" limited="true" range="-0.7854 0.7854" />
+                                                <geom quat="0.707105 0.707108 0 0" type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="LINK_WRIST_R2" />
+                                            </body>
+                                        </body>
+                                    </body>
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+            <site name="H_SITE_Target" pos="0 0 0.6" size="0.002" rgba="1 0 0 1"/>
+            <!-- <site name="E_L_SITE_Target" pos="0.268 0.25 0.5" size="0.02" rgba="1 1 0 1"/>
+            <site name="E_R_SITE_Target" pos="0.268 -0.25 0.5" size="0.02" rgba="1 0 0 1"/> -->
+            <site name="E_L_SITE_Target" pos="0.295 0.25 0.544" size="0.002" rgba="1 1 0 1"/>
+            <site name="E_R_SITE_Target" pos="0.295 -0.25 0.544" size="0.002" rgba="1 0 0 1"/>
+        </body>
+    </worldbody>
+
+    <actuator>
+        <position name="J_LAT_HIP"         joint="J_LAT_HIP"       forcerange="-200 200"   ctrlrange="0 5.4105"          kp="3000" kv="5"/>
+        <position name="J_LAT_LEG_L"       joint="J_LAT_LEG_L"     forcerange="-1000 1000" ctrlrange="0 0.32"            kp="50000" kv="2000"/>
+        <position name="J_LAT_WHEEL_L"     joint="J_LAT_WHEEL_L"   forcerange="-24 24"     ctrlrange="-1000000 1000000"  kp="100" kv="1"/>
+        <position name="J_LAT_FOOT_L"      joint="J_LAT_FOOT_L"    forcerange="-61 61"     ctrlrange="-2.1816 0"         kp="1500" kv="2"/>
+        <position name="J_LAT_LEG_R"       joint="J_LAT_LEG_R"     forcerange="-1000 1000" ctrlrange="0 0.32"            kp="50000" kv="2000"/>
+        <position name="J_LAT_WHEEL_R"     joint="J_LAT_WHEEL_R"   forcerange="-24 24"     ctrlrange="-1000000 1000000"  kp="100" kv="1"/>
+        <position name="J_LAT_FOOT_R"      joint="J_LAT_FOOT_R"    forcerange="-61 61"     ctrlrange="-2.1816 0"         kp="1500" kv="2"/>
+
+        <position name="J_MED_HIP"         joint="J_MED_HIP"       forcerange="-200 200"   ctrlrange="-5.4105 0"         kp="3000" kv="5"/>
+        <position name="J_MED_LEG_L"       joint="J_MED_LEG_L"     forcerange="-1000 1000" ctrlrange="0 0.32"            kp="50000" kv="2000"/>
+        <position name="J_MED_WHEEL_L"     joint="J_MED_WHEEL_L"   forcerange="-24 24"     ctrlrange="-1000000 1000000"  kp="100" kv="1"/>
+        <position name="J_MED_FOOT_L"      joint="J_MED_FOOT_L"    forcerange="-61 61"     ctrlrange="-2.1816 0"         kp="1500" kv="2"/>
+        <position name="J_MED_LEG_R"       joint="J_MED_LEG_R"     forcerange="-1000 1000" ctrlrange="0 0.32"            kp="50000" kv="2000"/>
+        <position name="J_MED_WHEEL_R"     joint="J_MED_WHEEL_R"   forcerange="-24 24"     ctrlrange="-1000000 1000000"  kp="100" kv="1"/>
+        <position name="J_MED_FOOT_R"      joint="J_MED_FOOT_R"    forcerange="-61 61"     ctrlrange="-2.1816 0"         kp="1500" kv="2"/>
+
+        <position name="J_WAIST_PITCH"     joint="J_WAIST_PITCH"   forcerange="-200 200"   ctrlrange="-0.6981 1.5708"    kp="3000" kv="20"/>
+        <position name="J_WAIST_YAW"       joint="J_WAIST_YAW"     forcerange="-100 100"   ctrlrange="-1.3614 1.3614"    kp="1000" kv="5"/>
+        <position name="J_HEAD"            joint="J_HEAD"          forcerange="-19 19"     ctrlrange="-0.6109 1.1345"    kp="500" kv="2"/>
+
+        <position name="J_SHOULDER_L1"     joint="J_SHOULDER_L1"   forcerange="-150 150"   ctrlrange="-3.229 2.007"      kp="500" kv="2"/>
+        <position name="J_SHOULDER_L2"     joint="J_SHOULDER_L2"   forcerange="-150 150"   ctrlrange="-0.261799 2.2689"  kp="1000" kv="5"/>
+        <position name="J_SHOULDER_L3"     joint="J_SHOULDER_L3"   forcerange="-70 70"     ctrlrange="-2.618 2.618"      kp="500" kv="2"/>
+        <position name="J_ELBOW_L1"        joint="J_ELBOW_L1"      forcerange="-81.9 81.9" ctrlrange="-1.2217 0.5236"    kp="500" kv="2"/>
+        <position name="J_ELBOW_L2"        joint="J_ELBOW_L2"      forcerange="-36 36"     ctrlrange="-2.618 2.618"      />
+        <position name="J_WRIST_L1"        joint="J_WRIST_L1"      forcerange="-13 13"     ctrlrange="-1.0472 1.0472"    kp="100" kv="1"/>
+        <position name="J_WRIST_L2"        joint="J_WRIST_L2"      forcerange="-13 13"     ctrlrange="-0.7854 0.7854"    kp="100" kv="1"/>
+
+        <position name="J_SHOULDER_R1"     joint="J_SHOULDER_R1"   forcerange="-150 150"   ctrlrange="-3.229 2.007"      kp="500" kv="2"/>
+        <position name="J_SHOULDER_R2"     joint="J_SHOULDER_R2"   forcerange="-150 150"   ctrlrange="-2.2689 0.261799"  kp="1000" kv="5"/>
+        <position name="J_SHOULDER_R3"     joint="J_SHOULDER_R3"   forcerange="-70 70"     ctrlrange="-2.618 2.618"      kp="500" kv="2"/>
+        <position name="J_ELBOW_R1"        joint="J_ELBOW_R1"      forcerange="-81.9 81.9" ctrlrange="-1.2217 0.5236"    kp="500" kv="2"/>
+        <position name="J_ELBOW_R2"        joint="J_ELBOW_R2"      forcerange="-36 36"     ctrlrange="-2.618 2.618"      />
+        <position name="J_WRIST_R1"        joint="J_WRIST_R1"      forcerange="-13 13"     ctrlrange="-1.0472 1.0472"    kp="100" kv="1"/>
+        <position name="J_WRIST_R2"        joint="J_WRIST_R2"      forcerange="-13 13"     ctrlrange="-0.7854 0.7854"    kp="100" kv="1"/>
+    </actuator>
+
+    <sensor>
+        <velocimeter name="head_site_linvel" site="H_SITE"/>
+        <velocimeter name="elbowl_site_linvel" site="E_L_SITE"/>
+        <velocimeter name="wristl_site_linvel" site="W_L_SITE"/>
+        <velocimeter name="elbowr_site_linvel" site="E_R_SITE"/>
+        <velocimeter name="wristr_site_linvel" site="W_R_SITE"/>
+
+        <gyro name="waist_site_angvel" site="waist_SITE"/>
+        <gyro name="elbowl_site_angvel" site="E_L_SITE"/>
+        <gyro name="wristl_site_angvel" site="W_L_SITE"/>
+        <gyro name="elbowr_site_angvel" site="E_R_SITE"/>
+        <gyro name="wristr_site_angvel" site="W_R_SITE"/>
+    </sensor>
+
+
+    <statistic center="1 -0.8 1.1" extent=".3"/>
+
+    <visual>
+        <headlight diffuse="0.6 0.6 0.6" ambient="0.1 0.1 0.1" specular="0.9 0.9 0.9"/>
+        <rgba haze="0.15 0.25 0.35 1"/>
+        <map znear="0.5" zfar="100"/>
+        <global azimuth="140" elevation="-20"/>
+    </visual>
+
+    <worldbody>
+        <geom name="floor" size="0 0 0.05"  pos="0 0 0" type="plane" material="groundplane"/>
+    </worldbody>
+
+</mujoco>
